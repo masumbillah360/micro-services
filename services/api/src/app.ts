@@ -8,7 +8,7 @@ import proxyRequest from './utils';
 // App
 const app = express();
 
-// Middlewares
+//Register Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
