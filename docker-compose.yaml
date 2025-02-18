@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./services/api
+    container_name: api
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./services/api:/app
+      - /app/node_modules
+    command: npm run dev
+
+  auth:
+    build: ./services/auth
+    container_name: auth
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./services/auth:/app
+      - /app/node_modules  # Avoid overwriting node_modules
+    command: npm run dev  # Ensure this uses a watch mode
+
+  blog:
+    build: ./services/blogs
+    container_name: blogs
+    ports:
+      - '3002:3002'
+    volumes:
+      - ./services/blogs:/app
+      - /app/node_modules
+    command: npm run dev
+
+  comments:
+    build: ./services/comments
+    container_name: comments
+    ports:
+      - '3003:3003'
+    volumes:
+      - ./services/comments:/app
+      - /app/node_modules
+    command: npm run dev
+
+  feedbacks:
+    build: ./services/feedbacks
+    container_name: feedbacks
+    ports:
+      - '3004:3004'
+    volumes:
+      - ./services/feedbacks:/app
+      - /app/node_modules
+    command: npm run dev
+
+  reactions:
+    build: ./services/reactions
+    container_name: reactions
+    ports:
+      - '3005:3005'
+    volumes:
+      - ./services/reactions:/app
+      - /app/node_modules
+    command: npm run dev
+
+  subscriber:
+    build: ./services/subscriber
+    container_name: subscriber
+    ports:
+      - '3006:3006'
+    volumes:
+      - ./services/subscriber:/app
+      - /app/node_modules
+    command: npm run dev
